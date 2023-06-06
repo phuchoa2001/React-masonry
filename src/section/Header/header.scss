@@ -1,0 +1,136 @@
+.header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1110px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+  }
+  
+  &__logo-icon {
+    width: 24px;
+    height: 24px;
+    background-color: #094b72;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+  }
+  
+  &__logo-icon-letter {
+    color: #fff;
+  }
+  
+  &__logo-text {
+    margin-left: 12px;
+  }
+
+  &__action {
+    display: flex;
+    align-items: center;
+  }
+
+  &__menu {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+
+      &-list {
+        margin-right: 20px;
+
+        & a {
+          text-decoration: none;
+          color: #333;
+        }
+      }
+    }
+  }
+
+  &__search-icon img {
+    height: 20px;
+    margin-left: 20px;
+  }
+
+  &__mobile-menu {
+    display: none;
+
+    & .header__menu-icon {
+      width: 30px;
+      height: 30px;
+      // background-image: url("menu-icon.png");
+      background-size: cover;
+      cursor: pointer;
+    }
+
+    & .header__drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 80%;
+      height: 100vh;
+      background-color: #f2f2f2;
+      z-index: 999;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+
+      &-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        &-item {
+          padding: 15px;
+
+          & a {
+            text-decoration: none;
+            color: #333;
+
+            // Animation for opening the drawer
+            @keyframes slideIn {
+              0% {
+                transform: translateX(100%);
+              }
+
+              100% {
+                transform: translateX(0);
+              }
+            }
+
+            & a {
+              text-decoration: none;
+              color: #333;
+              transition: color 0.3s ease-in-out;
+
+              &:hover {
+                color: #666;
+              }
+            }
+          }
+        }
+
+        // Handle checkbox state for opening/closing the drawer
+        & input[type="checkbox"] {
+          display: none;
+
+          &:checked~.header__drawer {
+            animation: slideIn 0.3s ease-in-out forwards;
+          }
+        }
+      }
+    }
+  }
+}
